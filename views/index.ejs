@@ -1,0 +1,89 @@
+<html>
+<head>
+	<title>LIANG CHAT</title>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <style type="text/css">
+        *{
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 200;
+            background-color: #F5F1DE;
+        }
+        h1{
+            margin-top: 30px;
+            margin-bottom: 0px;
+            font-size: 85px;
+        }
+        #chat_box{
+            width: 500px;
+            height: 400px;
+            border:1px solid black;
+            overflow-y: auto;
+        }
+        #container{
+            margin-top: 5%;
+           margin-left: 30%;
+        }
+        .textinput{
+            width: 400px;
+        }
+        p.user_connected{
+            text-align: center;
+            color: green;
+        }
+        p.user_disconnected{
+            text-align: center;
+            color: red;
+        }
+        p.new_message{
+            margin-left: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		//this triggers the connection event in our server
+    		var socket = io.connect();
+    		//we'll write all the socket stuff after the above line
+            var user = prompt("What is your name?");
+        
+    		socket.emit("new_user", {name: user});
+    		socket.on ('initial_messages', function(data){
+    			for(message in data.messages) {
+    				$('#chat_box').append("<p>" + data.messages[message] + "</p>");
+    			}
+    		})
+    		socket.on('user_connected', function(data){
+    			$('#chat_box').append("<p class='user_connected'>" + data.message + "</p>");
+                $('#chat_box').scrollTop($('#chat_box')[0].scrollHeight);
+    		})
+    		$('#chat_submit').click(function(){
+    			var new_message = user + ": " + $("input").val();
+    			socket.emit("message_submit", {message: new_message})
+                $('#chat_box').scrollTop($('#chat_box')[0].scrollHeight);
+    		})
+    		socket.on('new_message', function(data){
+    			$('#chat_box').append("<p class='new_message'>" + data.message + "</p>");
+                  $('#chat_box').scrollTop($('#chat_box')[0].scrollHeight);
+
+    		})
+    		socket.on('user_disconnected', function(data){
+    			$('#chat_box').append("<p class='user_disconnected'>" + data.message + "</p>");
+                $('#chat_box').scrollTop($('#chat_box')[0].scrollHeight);
+    		})
+
+    	})
+    </script>
+</head>
+<body>
+    <div id='container'>
+        <h1>LIANG CHAT</h1>
+        <div id='chat_box'></div>
+        <input class='textinput' type='text' name='submit'>
+        <button id='chat_submit'>Send</button>
+    </div>
+</body>
+</html>

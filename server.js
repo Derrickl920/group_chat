@@ -4,6 +4,7 @@ var path = require("path");
 // create the express app
 var app = express();
 // setting up ejs and our views folder
+app.use(express.static(path.join(__dirname, './static')));
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
 // root route to render the index.ejs view

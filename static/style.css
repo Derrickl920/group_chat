@@ -13,6 +13,7 @@
             width: 500px;
             height: 400px;
             border:1px solid black;
+            box-shadow: 10px 10px 5px #888888;
             overflow-y: auto;
         }
         #container{
@@ -22,6 +23,7 @@
         .textinput{
             width: 400px;
             margin-left: 14px;
+            
         }
         p.user_connected{
             text-align: center;

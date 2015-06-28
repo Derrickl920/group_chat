@@ -1,16 +1,16 @@
 {
-  "name": "group-chat",
+  "name": "groupchat",
   "dependencies": {
     "body-parser": "^1.13.1",
     "ejs": "^1.0.0",
     "express": "^4.10.8",
-    "socket.io": "^1.3.5"
+    "socket.io": "^1.3.4"
   },
   "scripts": {
     "start": "node server.js"
   },
   "version": "1.0.0",
-  "description": "chat app using sockets",
+  "description": "Groupchat with sockets",
   "main": "server.js",
   "devDependencies": {},
   "repository": {
@@ -18,15 +18,16 @@
     "url": "git+https://github.com/Derrickl920/group_chat.git"
   },
   "keywords": [
-    "sockets"
+    "sockets",
+    "groupchat"
   ],
-  "author": "",
+  "author": "derrick-liang",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Derrickl920/group_chat/issues"
   },
-  "engines": {
-    "node": "0.10.x"
-  },
-  "homepage": "https://github.com/Derrickl920/group_chat#readme"
+  "homepage": "https://github.com/Derrickl920/group_chat#readme",
+   "engines": {
+    "node": "0.12.2"
+  }
 }

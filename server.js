@@ -12,7 +12,7 @@ app.get('/', function(req, res) {
  res.render("index");
 })
 // tell the express app to listen on port 8000
-var server = app.listen(8000, function() {
+var server = app.listen(process.env.PORT || 8000, function() {
  console.log("listening on port 8000");
 })
 var io = require('socket.io').listen(server)

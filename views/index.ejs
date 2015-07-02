@@ -12,13 +12,22 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+    <div id='login' class='container-fluid'>
+        <h1 class='text-primary'>Groupchat App</h1>
+        <form>
+            <input id='login_name' class='form-control' type='text' placeholder='What is your name?'><br>
+            <input id='login_submit' class='btn btn-primary' type='submit' value='Enter'>
+        </form>
+    </div>
+
     <div id='container'>
         <h1 class='text-primary'>Groupchat by Liang</h1>
         <div id='chat_box'></div>
 
     <form id="myform">
         <div class='row'>
-        <input class='textinput form-control col-xs-6' type='text' name='submit' onclick='submitForm()'>
+        <input id='message' class='textinput form-control col-xs-6' type='text' name='submit' onclick='submitForm()'>
         <button class='btn btn-primary col-xs-1' id='chat_submit'>Send</button>
         <div>
     </form>

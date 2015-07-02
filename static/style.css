@@ -9,6 +9,15 @@
             margin-bottom: 0px;
             font-size: 65px;
         }
+        #login{
+            text-align: center;
+            margin-top: 200px;
+        }
+        #login_name{
+            width: 300px;
+            text-align: center;
+            margin: auto;
+        }
         #chat_box{
             width: 500px;
             height: 400px;
@@ -19,6 +28,11 @@
         #container{
             margin-top: 5%;
            margin-left: 30%;
+        }
+        #myform input, #myform button{
+            margin-top: 2px;
+            box-shadow: 5px 3px 5px #888888;
+
         }
         .textinput{
             width: 400px;
